@@ -6,6 +6,7 @@ const Home = () => {
     <div
       style={{
         width: "100%",
+        height: "calc(100vh - 120px)", // Adjust height based on your header/footer
       }}
     >
       <div style={{ width: "90%", margin: "0 auto", paddingBottom: "20px" }}>

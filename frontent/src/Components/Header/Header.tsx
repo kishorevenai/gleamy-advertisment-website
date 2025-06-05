@@ -9,6 +9,7 @@ const Header = () => {
     <div
       style={{
         position: "sticky",
+        height: "120px",
         top: 0,
         zIndex: 1000,
         backdropFilter: "blur(10px)",
