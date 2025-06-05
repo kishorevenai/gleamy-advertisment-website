@@ -5,6 +5,52 @@ import Hamburger from "hamburger-react";
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
 
+  const menuItems = [
+    { name: "Home", link: "/" },
+    { name: "About", link: "/about" },
+    { name: "Services", link: "/services" },
+    { name: "Portfolio", link: "/portfolio" },
+    { name: "Contact", link: "/contact" },
+  ];
+
+  const SideMenuContent = (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+        position: "absolute",
+        top: "120px",
+        right: 0,
+        width: "500px",
+        backgroundColor: "black",
+        height: "calc(100vh - 120px)",
+        backdropFilter: "blur(10px)",
+        WebkitBackdropFilter: "blur(10px)",
+        zIndex: 1100,
+        transform: isOpen ? "translateX(0)" : "translateX(100%)",
+        transition: "transform 0.3s ease-in-out",
+        color: "white",
+      }}
+    >
+      {menuItems.map((item) => (
+        <div
+          key={item.name}
+          style={{
+            width: "100%",
+            cursor: "pointer",
+            padding: "10px 20px",
+            borderBottom: "1px solid #ccc",
+            fontSize: "80px",
+          }}
+        >
+          {item.name}
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <div
       style={{
@@ -124,6 +170,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      {SideMenuContent}
     </div>
   );
 };
