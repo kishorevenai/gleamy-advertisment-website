@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import Hamburger from "hamburger-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
@@ -8,7 +9,7 @@ const Header = () => {
   const menuItems = [
     { name: "Home", link: "/" },
     { name: "About", link: "/about" },
-    { name: "Services", link: "/services" },
+    { name: "Services", link: "/service" },
     { name: "Portfolio", link: "/portfolio" },
     { name: "Contact", link: "/contact" },
   ];
@@ -35,18 +36,20 @@ const Header = () => {
       }}
     >
       {menuItems.map((item) => (
-        <div
-          key={item.name}
-          style={{
-            width: "100%",
-            cursor: "pointer",
-            padding: "10px 20px",
-            borderBottom: "1px solid #ccc",
-            fontSize: "80px",
-          }}
-        >
-          {item.name}
-        </div>
+        <Link to={item.link} style={{ textDecoration: "none", color: "white" }}>
+          <div
+            key={item.name}
+            style={{
+              width: "100%",
+              cursor: "pointer",
+              padding: "10px 20px",
+              borderBottom: "1px solid #ccc",
+              fontSize: "80px",
+            }}
+          >
+            {item.name}
+          </div>
+        </Link>
       ))}
     </div>
   );
