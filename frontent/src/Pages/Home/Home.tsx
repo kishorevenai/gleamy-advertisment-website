@@ -9,6 +9,8 @@ const Home = () => {
       style={{
         width: "100%",
         height: "calc(100vh - 120px)", // Adjust height based on your header/footer
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       <div
