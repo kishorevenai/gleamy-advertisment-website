@@ -2,29 +2,30 @@ import { Icon } from "@iconify/react";
 import { useState, useEffect, useRef } from "react";
 import Hamburger from "hamburger-react";
 import { Link } from "react-router-dom";
+import "./Header.css";
 
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (event: MouseEvent) => {
+  //     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+  //       setOpen(false);
+  //     }
+  //   };
 
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
+  //   if (isOpen) {
+  //     document.addEventListener("mousedown", handleClickOutside);
+  //   } else {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   }
 
-    // Cleanup
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen]);
+  //   // Cleanup
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, [isOpen]);
 
   const menuItems = [
     { name: "Home", link: "/" },
@@ -36,6 +37,7 @@ const Header = () => {
 
   const SideMenuContent = (
     <div
+      className="Menus"
       ref={menuRef}
       style={{
         display: "flex",
@@ -45,7 +47,6 @@ const Header = () => {
         position: "absolute",
         top: "120px",
         right: 0,
-        width: "500px",
         backgroundColor: "black",
         height: "calc(100vh - 120px)",
         backdropFilter: "blur(10px)",
@@ -59,13 +60,13 @@ const Header = () => {
       {menuItems.map((item) => (
         <Link to={item.link} style={{ textDecoration: "none", color: "white" }}>
           <div
+            className="menu_text"
             key={item.name}
             style={{
               width: "100%",
               cursor: "pointer",
               padding: "10px 20px",
               borderBottom: "1px solid #ccc",
-              fontSize: "80px",
             }}
           >
             {item.name}
@@ -92,13 +93,15 @@ const Header = () => {
           marginRight: "3%",
           display: "flex",
           justifyContent: "space-between",
+
           alignItems: "center",
         }}
       >
         <div
+          className="header_left"
           style={{
             width: "10%",
-            display: "flex",
+            minWidth: "200px",
             justifyContent: "space-between",
             alignItems: "center",
           }}

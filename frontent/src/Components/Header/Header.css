@@ -1,4 +1,24 @@
-.backdrop-blur {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
+.header_left {
+  display: flex;
+}
+
+.Menus {
+  width: "500px";
+}
+.menu_text {
+  font-size: 80px;
+}
+
+@media (max-width: 570px) {
+  .header_left {
+    display: none; /* ✅ No quotes */
+  }
+
+  .menu_text {
+    font-size: 50px;
+  }
+
+  .Menus {
+    width: 100%;
+  }
 }

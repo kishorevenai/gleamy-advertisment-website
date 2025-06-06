@@ -1,0 +1,30 @@
+.MainText {
+  font-size: 80px;
+  line-height: "150px";
+  text-wrap: wrap;
+}
+.vertical_cont {
+  width: "100px";
+}
+/* .home_container {
+  width: 100%;
+  border: "1px solid white";
+  height: "calc(100vh - 120px)";
+} */
+
+@media (max-width: 700px) {
+  .MainText {
+    font-size: 60px;
+    line-height: "100px";
+  }
+}
+
+@media (max-width: 550px) {
+  .MainText {
+    font-size: 30px;
+    line-height: "100px";
+  }
+  .vertical_cont {
+    width: "50px";
+  }
+}

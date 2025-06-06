@@ -1,20 +1,24 @@
 import framer from "../../assets/framer.png";
 import Marquee from "../../Components/Marque/Marque";
+import "./Home.css";
 
 const Home = () => {
   return (
     <div
+      className="home_container"
       style={{
         width: "100%",
         height: "calc(100vh - 120px)", // Adjust height based on your header/footer
       }}
     >
-      <div style={{ width: "90%", margin: "0 auto", paddingBottom: "20px" }}>
+      <div
+        className="vertical_cont"
+        style={{ width: "90%", margin: "0 auto", paddingBottom: "20px" }}
+      >
         <img
           src={framer}
           alt="framer"
           style={{
-            width: "100px", // optional: control size
             animation: "spin 10s linear infinite",
             display: "block", // optional for layout
           }}
@@ -32,12 +36,12 @@ const Home = () => {
       </style>
 
       <div
+        className="home_content"
         style={{
           display: "flex",
           justifyContent: "start",
           alignItems: "center",
           width: "90%",
-          margin: "0 auto",
         }}
       >
         <div
@@ -76,19 +80,14 @@ const Home = () => {
           </p>
         </div>
         <div>
-          <p
-            style={{
-              fontSize: "100px",
-              lineHeight: "150px",
-            }}
-          >
+          <p className="MainText" style={{}}>
             Brand. Design. Product <br />
             In Hour Developement <br />& More
           </p>
         </div>
       </div>
-      <Marquee bgColor={"red"} rotation={50} top="-60%" />
-      <Marquee bgColor={"green"} rotation={-20} top="90%" />
+      <Marquee className={"one"} bgColor={"red"} rotation={50} top="-60%" />
+      <Marquee className={"two"} bgColor={"green"} rotation={-20} top="90%" />
     </div>
   );
 };

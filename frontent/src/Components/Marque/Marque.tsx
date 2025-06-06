@@ -1,9 +1,15 @@
 import "./Marque.css";
 
-const Marquee = ({ rotation = -16, top = "50%", left = "-50%", bgColor }) => {
+const Marquee = ({
+  className,
+  rotation = -16,
+  top = "50%",
+  left = "-50%",
+  bgColor,
+}) => {
   return (
     <div
-      className="marquee-wrapper"
+      className={`marquee-wrapper ${className}`}
       style={{
         transform: `rotate(${rotation}deg)`,
         top,
