@@ -1,10 +1,30 @@
 import { Icon } from "@iconify/react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Hamburger from "hamburger-react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    // Cleanup
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   const menuItems = [
     { name: "Home", link: "/" },
@@ -16,6 +36,7 @@ const Header = () => {
 
   const SideMenuContent = (
     <div
+      ref={menuRef}
       style={{
         display: "flex",
         flexDirection: "column",

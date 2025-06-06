@@ -21,7 +21,6 @@ const CommonLayout = ({
     <div
       style={{
         width: "100%",
-        border: "1px solid white",
         height: "calc(100vh - 130px)", // Adjust height based on your header/footer
         position: "relative",
         opacity: fadeIn ? 1 : 0,
