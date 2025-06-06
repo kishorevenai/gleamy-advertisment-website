@@ -7,7 +7,7 @@ const MainLayout = () => {
     <div
       style={{
         position: "relative",
-        overflow: "hidden",
+        overflowX: "hidden",
       }}
     >
       <Header />

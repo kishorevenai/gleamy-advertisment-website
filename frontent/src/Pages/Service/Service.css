@@ -1,0 +1,9 @@
+.service_box {
+  width: 396px;
+}
+
+@media (max-width: 1140px) {
+  .service_box {
+    width: 200px;
+  }
+}

@@ -1,0 +1,24 @@
+.capital {
+  font-size: 300px;
+  color: transparent;
+  -webkit-text-stroke: 3px white;
+}
+
+@media (max-width: 700px) {
+  .capital {
+    font-size: 200px;
+  }
+}
+.vertical_text {
+  width: 100px;
+}
+
+@media (max-width: 450px) {
+  .capital {
+    display: none;
+    font-size: 100px;
+  }
+  .vertical_text {
+    width: 30px;
+  }
+}

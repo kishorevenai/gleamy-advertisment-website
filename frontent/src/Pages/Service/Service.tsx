@@ -1,4 +1,6 @@
 import CommonLayout from "../CommonTheme/CommonLayout";
+import "./Service.css";
+
 const Service = () => {
   const servicesProvided = [
     {
@@ -21,6 +23,7 @@ const Service = () => {
         style={{
           display: "flex",
           width: "100%",
+          flexWrap: "wrap",
         }}
       >
         {servicesProvided.map((service, index) => {
@@ -36,12 +39,12 @@ const Service = () => {
 export const CardItems = ({ title, desc }: { title: string; desc: string }) => {
   return (
     <div
+      className="service_box"
       style={{
         display: "flex",
         flexDirection: "column",
         justifyContent: "start",
         alignItems: "start",
-        width: "396px",
         height: "261px",
       }}
     >

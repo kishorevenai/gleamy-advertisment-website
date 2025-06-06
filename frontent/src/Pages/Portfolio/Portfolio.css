@@ -1,0 +1,16 @@
+.portfolio_card {
+  width: 400px;
+  aspect-ratio: 1 / 1;
+}
+
+@media (max-width: 700px) {
+  .portfolio_card {
+    width: 200px;
+  }
+}
+
+@media (max-width: 450px) {
+  .portfolio_card {
+    width: 100%;
+  }
+}

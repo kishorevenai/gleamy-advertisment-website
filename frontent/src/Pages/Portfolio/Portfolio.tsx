@@ -2,6 +2,7 @@ import CommonLayout from "../CommonTheme/CommonLayout";
 import picOne from "../../assets/pic1.jpg";
 import picTwo from "../../assets/pic2.jpg";
 import picThree from "../../assets/pic3.jpg";
+import "./Portfolio.css";
 const Portfolio = () => {
   const photos = [
     {
@@ -27,6 +28,7 @@ const Portfolio = () => {
         style={{
           display: "flex",
           gap: "5px",
+          flexWrap: "wrap",
         }}
       >
         {photos.map((photo, index) => {
@@ -54,12 +56,7 @@ const CommoonCard = ({
   img: string;
 }) => {
   return (
-    <div
-      style={{
-        width: "400px",
-        height: "418px",
-      }}
-    >
+    <div className="portfolio_card">
       <img
         src={img}
         style={{

@@ -1,5 +1,6 @@
 import framer from "../../assets/framer.png";
 import { useEffect, useState } from "react";
+import "./CommonLayout.css";
 
 const CommonLayout = ({
   title,
@@ -85,10 +86,10 @@ const CommonLayout = ({
         }}
       >
         <div
+          className="vertical_text"
           style={{
             flexDirection: "column",
             height: "300px",
-            width: "100px",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -121,23 +122,15 @@ const CommonLayout = ({
           </p>
         </div>
         <div
+          className="capital_parent"
           style={{
-            aspectRatio: "1 / 1",
             height: "350px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <p
-            style={{
-              fontSize: "300px",
-              color: "transparent",
-              WebkitTextStroke: "3px white",
-            }}
-          >
-            {capital}
-          </p>
+          <p className="capital">{capital}</p>
         </div>
         <div
           style={{

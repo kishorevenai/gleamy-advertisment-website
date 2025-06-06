@@ -1,0 +1,30 @@
+.font_one {
+  font-size: 40px;
+}
+
+.font_two {
+  font-size: 40px;
+  line-height: 50px;
+}
+
+@media (max-width: 1000px) {
+  .font_one {
+    font-size: 30px;
+  }
+
+  .font_two {
+    font-size: 20px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 450px) {
+  .font_one {
+    font-size: 20px;
+  }
+
+  .font_two {
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
