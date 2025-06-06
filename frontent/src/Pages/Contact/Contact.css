@@ -1,0 +1,37 @@
+.contact_text_one {
+  font-size: 150px;
+}
+.contact_form {
+  display: flex;
+}
+
+.content {
+  width: 50%;
+}
+
+.forms {
+  width: 50%;
+}
+
+@media (max-width: 1400px) {
+  .contact_text_one {
+    font-size: 100px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .contact_text_one {
+    font-size: 60px;
+  }
+  .contact_form {
+    flex-direction: column;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .forms {
+    width: 100%;
+  }
+}

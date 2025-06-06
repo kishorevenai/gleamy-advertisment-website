@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import "./Contact.css";
+
 const Contact = () => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -11,18 +13,21 @@ const Contact = () => {
 
   return (
     <div
+      className="contact_form"
       style={{
-        display: "flex",
-        justifyContent: "space-between",
+        height: "calc(100vh - 120px)",
+        justifyContent: "start",
+        margin: "2px",
         alignItems: "center",
         opacity: fadeIn ? 1 : 0,
         transition: "opacity 0.8s ease-in-out",
       }}
     >
-      <div>
+      <div className="content">
         <p
+          className="contact_text_one"
           style={{
-            fontSize: "150px",
+            textWrap: "wrap",
           }}
         >
           LET'S WORK
@@ -40,10 +45,11 @@ const Contact = () => {
           productive cooperation. Email: talktous@theprid.com
         </p>
       </div>
-      <form style={{ width: "50%", height: "500px" }}>
+      <form className="forms" style={{ height: "500px" }}>
         <div
           style={{
             display: "flex",
+            flexWrap: "wrap",
             justifyContent: "space-between",
             alignItems: "center",
             gap: "20px",
