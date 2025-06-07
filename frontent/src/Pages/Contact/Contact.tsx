@@ -1,15 +1,39 @@
 import { useState, useEffect } from "react";
 import "./Contact.css";
+import axios from "axios";
 
 const Contact = () => {
   const [isHovered, setIsHovered] = useState(false);
-
   const [fadeIn, setFadeIn] = useState(false);
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
   useEffect(() => {
-    const timer = setTimeout(() => setFadeIn(true), 50); // slight delay for smoother transition
+    const timer = setTimeout(() => setFadeIn(true), 50);
     return () => clearTimeout(timer);
   }, []);
+
+  const handle_submit_message = async (e: React.FormEvent) => {
+    e.preventDefault(); // stop form default submission
+
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    try {
+      const result = await axios.post("http://localhost:3600/api/contact", {
+        name,
+        email,
+        message,
+      });
+      console.log("Submitted:", result.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div
@@ -24,12 +48,7 @@ const Contact = () => {
       }}
     >
       <div className="content">
-        <p
-          className="contact_text_one"
-          style={{
-            textWrap: "wrap",
-          }}
-        >
+        <p className="contact_text_one" style={{ textWrap: "wrap" }}>
           LET'S WORK
           <br /> TOGETHER
         </p>
@@ -45,7 +64,12 @@ const Contact = () => {
           productive cooperation. Email: talktous@theprid.com
         </p>
       </div>
-      <form className="forms" style={{ height: "500px" }}>
+
+      <form
+        onSubmit={handle_submit_message}
+        className="forms"
+        style={{ height: "500px" }}
+      >
         <div
           style={{
             display: "flex",
@@ -56,19 +80,25 @@ const Contact = () => {
           }}
         >
           <input
-            style={{
-              backgroundColor: "transparent",
-              borderRadius: "50px",
-
-              paddingLeft: "20px",
-              fontSize: "30px",
-              border: "white solid 1px",
-              color: "white",
-              height: "50px",
-            }}
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             placeholder="NAME"
-          ></input>
+            style={{
+              backgroundColor: "transparent",
+              borderRadius: "50px",
+              paddingLeft: "20px",
+              fontSize: "30px",
+              border: "white solid 1px",
+              color: "white",
+              height: "50px",
+            }}
+          />
           <input
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="EMAIL"
             style={{
               backgroundColor: "transparent",
               borderRadius: "50px",
@@ -78,10 +108,13 @@ const Contact = () => {
               border: "white solid 1px",
               height: "50px",
             }}
-            placeholder="EMAIL"
-          ></input>
+          />
         </div>
+
         <textarea
+          required
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           placeholder="MESSAGE"
           style={{
             color: "white",
@@ -98,6 +131,7 @@ const Contact = () => {
         />
 
         <button
+          type="submit"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           style={{
