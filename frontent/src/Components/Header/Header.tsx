@@ -8,24 +8,24 @@ const Header = () => {
   const [isOpen, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // useEffect(() => {
-  //   const handleClickOutside = (event: MouseEvent) => {
-  //     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-  //       setOpen(false);
-  //     }
-  //   };
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
 
-  //   if (isOpen) {
-  //     document.addEventListener("mousedown", handleClickOutside);
-  //   } else {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   }
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
 
-  //   // Cleanup
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, [isOpen]);
+    // Cleanup
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   const menuItems = [
     { name: "Home", link: "/" },
@@ -58,10 +58,14 @@ const Header = () => {
       }}
     >
       {menuItems.map((item) => (
-        <Link to={item.link} style={{ textDecoration: "none", color: "white" }}>
+        <Link
+          key={item.name}
+          to={item.link}
+          style={{ textDecoration: "none", color: "white" }}
+          onClick={() => setOpen(false)} // <--- this line closes the menu
+        >
           <div
             className="menu_text"
-            key={item.name}
             style={{
               width: "100%",
               cursor: "pointer",
