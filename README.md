@@ -7,8 +7,8 @@ Gleamy is a sleek, animated multi-page website built for a creative agency. The 
       Note: The frontend was hosted in the netlify hosting platform.
 
 🔗 **backend Api:** (https://gleamy-advertisment-website.onrender.com)
-      1. https://https://gleamy-advertisment-website.onrender.com/api/contact
-      2. https://gleamy-advertisment-website.onrender.com/api/messages
+      ## 1. https://https://gleamy-advertisment-website.onrender.com/api/contact
+      ## 2. https://gleamy-advertisment-website.onrender.com/api/messages
 
       Enviromnent Variables:
       1. DATABASE_URL: postgresql://gleamy_owner:npg_vZiGOj30IlRq@ep-fragrant-paper-a878qu4a-pooler.eastus2.azure.neon.tech/gleamy?sslmode=require
