@@ -26,11 +26,14 @@ const Contact = () => {
     }
 
     try {
-      await axios.post("http://localhost:3600/api/contact", {
-        name,
-        email,
-        message,
-      });
+      await axios.post(
+        "https://gleamy-advertisment-website.onrender.com/api/contact",
+        {
+          name,
+          email,
+          message,
+        }
+      );
       toast.success("Message sent successfully!");
       setName("");
       setEmail("");
