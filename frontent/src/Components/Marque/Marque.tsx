@@ -5,8 +5,7 @@ const Marquee = ({
   rotation = -16,
   top = "50%",
   left = "-50%",
-  bgColor,
-}) => {
+}: any) => {
   return (
     <div
       className={`marquee-wrapper ${className}`}

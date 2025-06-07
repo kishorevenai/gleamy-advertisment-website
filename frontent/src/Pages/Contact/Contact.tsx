@@ -26,7 +26,7 @@ const Contact = () => {
     }
 
     try {
-      const result = await axios.post("http://localhost:3600/api/contact", {
+      await axios.post("http://localhost:3600/api/contact", {
         name,
         email,
         message,
