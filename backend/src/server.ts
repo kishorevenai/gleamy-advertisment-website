@@ -3,10 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { corsOptions } from "./config/corsOptions";
 import { PrismaClient } from "@prisma/client";
-console.log("Before PrismaClient init");
-const prisma = new PrismaClient();
-console.log("After PrismaClient init");
 
+const prisma = new PrismaClient();
 
 dotenv.config();
 
@@ -29,9 +27,19 @@ app.post("/api/contact", async (req, res) => {
       },
     });
 
-    return res.status(200).json({ message: "Inquiry saved" });
+    return res.status(200).json({ message: "Inquiry saved", inquiry });
   } catch (error) {
     console.error("Error saving inquiry:", error);
+    return res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
+//@ts-ignore
+app.get("/api/get_all_inquiry", async (req, res) => {
+  try {
+    const result = await prisma.inquiry.findMany({});
+    return res.status(200).json({ message: "Inquiry saved", result });
+  } catch (error) {
     return res.status(500).json({ error: "Something went wrong" });
   }
 });

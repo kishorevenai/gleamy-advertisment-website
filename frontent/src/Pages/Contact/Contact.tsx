@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Contact.css";
 import axios from "axios";
 
@@ -16,10 +18,10 @@ const Contact = () => {
   }, []);
 
   const handle_submit_message = async (e: React.FormEvent) => {
-    e.preventDefault(); // stop form default submission
+    e.preventDefault();
 
     if (!name.trim() || !email.trim() || !message.trim()) {
-      alert("Please fill in all fields");
+      toast.warn("Please fill in all fields");
       return;
     }
 
@@ -29,9 +31,13 @@ const Contact = () => {
         email,
         message,
       });
-      console.log("Submitted:", result.data);
+      toast.success("Message sent successfully!");
+      setName("");
+      setEmail("");
+      setMessage("");
     } catch (error) {
       console.error(error);
+      toast.error("Failed to send message. Please try again.");
     }
   };
 
@@ -47,6 +53,8 @@ const Contact = () => {
         transition: "opacity 0.8s ease-in-out",
       }}
     >
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
+
       <div className="content">
         <p className="contact_text_one" style={{ textWrap: "wrap" }}>
           LET'S WORK

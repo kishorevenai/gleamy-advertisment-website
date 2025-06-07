@@ -17,9 +17,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const cors_1 = __importDefault(require("cors"));
 const corsOptions_1 = require("./config/corsOptions");
 const client_1 = require("@prisma/client");
-console.log("Before PrismaClient init");
 const prisma = new client_1.PrismaClient();
-console.log("After PrismaClient init");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3600;
@@ -36,10 +34,20 @@ app.post("/api/contact", (req, res) => __awaiter(void 0, void 0, void 0, functio
                 message,
             },
         });
-        return res.status(200).json({ message: "Inquiry saved" });
+        return res.status(200).json({ message: "Inquiry saved", inquiry });
     }
     catch (error) {
         console.error("Error saving inquiry:", error);
+        return res.status(500).json({ error: "Something went wrong" });
+    }
+}));
+//@ts-ignore
+app.get("/api/get_all_inquiry", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield prisma.inquiry.findMany({});
+        return res.status(200).json({ message: "Inquiry saved", result });
+    }
+    catch (error) {
         return res.status(500).json({ error: "Something went wrong" });
     }
 }));
